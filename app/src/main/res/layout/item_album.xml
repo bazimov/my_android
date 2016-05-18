@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    >
+
+    <RelativeLayout
+        android:id="@+id/rl_item_album"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        >
+        <ImageView
+            android:id="@+id/iv_item_album"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/mp3"
+            android:layout_centerVertical="true"
+            android:contentDescription="@string/audio" />
+        <TextView
+            android:id="@+id/tv_item_album"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:text="@string/track"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/iv_item_album"
+            android:layout_toEndOf="@id/iv_item_album"/>
+        <ImageButton
+            android:id="@+id/btn_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_delete_24dp"
+            android:background="@color/transparent"
+            android:textColor="@color/red"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:visibility="visible"
+            android:contentDescription="@string/delete" />
+        <ImageButton
+            android:id="@+id/btn_download"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_file_download_24dp"
+            android:background="@color/transparent"
+            android:textColor="@color/red"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:visibility="visible"
+            android:contentDescription="@string/hello_world" />
+
+    </RelativeLayout>
+
+</LinearLayout>
