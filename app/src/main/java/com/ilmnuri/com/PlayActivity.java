@@ -28,11 +28,6 @@ import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import com.android.volley.RequestQueue;
-import com.android.volley.cache.BitmapImageCache;
-import com.android.volley.cache.SimpleImageLoader;
-import com.android.volley.toolbox.ImageLoader;
-import com.android.volley.toolbox.Volley;
 import com.ilmnuri.com.Utility.Utils;
 import com.ilmnuri.com.model.Api;
 import com.ilmnuri.com.model.Category;
@@ -50,8 +45,6 @@ public class PlayActivity extends AppCompatActivity  {
 
     public static final int DIALOG_DOWNLOAD_PROGRESS = 0;
     private ProgressDialog mProgressDialog;
-
-    private  SimpleImageLoader mImageLoader;
 
     private ImageView imageView;
     private int currentCategory;
@@ -141,9 +134,6 @@ public class PlayActivity extends AppCompatActivity  {
     }
 
     private void initVariables() {
-        Context mContext = this;
-        RequestQueue mRequestQueue = Volley.newRequestQueue(mContext);
-        mImageLoader = new SimpleImageLoader(mRequestQueue, BitmapImageCache.getInstance(null));
 
         readExternalStoragePermission = false;
 
@@ -183,26 +173,20 @@ public class PlayActivity extends AppCompatActivity  {
 
     private void loadImage() {
 
-        String imageUrl = "";
         switch (currentCategory) {
             case 0:
-                imageUrl = Api.catetory1_image;
+                imageView.setImageDrawable(getResources().getDrawable(R.drawable.ilm));
                 break;
             case 1:
-                imageUrl = Api.catetory2_image;
+                imageView.setImageDrawable(getResources().getDrawable(R.drawable.ilm2));
                 break;
             case 2:
-                imageUrl = Api.catetory3_image;
+                imageView.setImageDrawable(getResources().getDrawable(R.drawable.ilm3));
                 break;
 
         }
 
-        mImageLoader.get(imageUrl,
-                ImageLoader.getImageListener(imageView,
-                        R.drawable.splash_small,
-                        R.drawable.splash_small));
     }
-
 
     @Override
     protected Dialog onCreateDialog(int id) {
@@ -237,7 +221,7 @@ public class PlayActivity extends AppCompatActivity  {
                 connexion.connect();
 
                 int lenghtOfFile = connexion.getContentLength();
-                // Log.d("ANDRO_ASYNC", "Lenght of file: " + lenghtOfFile);
+                Log.d("ANDRO_ASYNC", "Lenght of file: " + lenghtOfFile);
 
                 InputStream input = new BufferedInputStream(url.openStream());
                 OutputStream output = new FileOutputStream(Api.localPath + "/" + fileName);
@@ -315,7 +299,6 @@ public class PlayActivity extends AppCompatActivity  {
             }
         });
 
-        boolean isPlaying = false;
         ImageButton btnStart = (ImageButton) findViewById(R.id.media_play);
 
         if (btnStart != null) {
